@@ -23,3 +23,4 @@ mongoose.connect(
     console.log('Connected to DB...');
   })
 app.listen(port);
+console.log(`Running on Port ${port}...`);

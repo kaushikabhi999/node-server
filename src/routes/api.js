@@ -3,11 +3,11 @@ const User = require('../Models/User');
 const { request, response } = require('express');
 const router = express.Router();
 
-router.post('/login', (request, response) => {
+router.post('/login', async (request, response) => {
   try {
     const user = await User
-      .where('username', request.params.username)
-      .where('password', request.params.password);
+      .where('username', request.body.username)
+      .where('password', request.body.password);
     if (user.length) {
       return response.json({ message: 'Login Successful!!' });
     } else {
@@ -61,7 +61,7 @@ router.post('/users', async (request, response) => {
   });
   try {
     const savedUser = await user.save();
-    return response.json(savedUser);
+    return response.json({ data: savedUser, message: 'Registered Succefully' });
   } catch (err) {
     const msg = err.message;
     return response.status(400).json({ message: msg });
