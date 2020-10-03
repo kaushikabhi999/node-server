@@ -1,2 +1,3 @@
-npm i express
-npm i joi
+# node server
+`npm i express`
+`npm i joi`
